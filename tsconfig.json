@@ -10,7 +10,7 @@
     "noEmit": true,
     "rootDir": "./",
     "strict": false,
-    "sourceMap": false
+    "sourceMap": true
   }
 }
 

@@ -1,9 +1,10 @@
 {
   "type": "module",
   "scripts": {
+    "start": "pnpm run build && node --enable-source-maps dist/bin.cjs http_server --config_file config.yml",
     "test": "mocha tests",
     "tsc": "tsc",
-    "build": "esbuild cmd/bin.ts  --bundle --platform=node --outfile=dist/bin.cjs --target=node12 --loader:.gz=binary --loader:.html=text"
+    "build": "rm -rf dist/ && esbuild cmd/bin.ts --sourcemap --bundle --platform=node --outfile=dist/bin.cjs --target=node12 --loader:.gz=binary --loader:.html=text"
   },
   "devDependencies": {
     "@types/yargs": "^17.0.32",
@@ -13,6 +14,7 @@
     "typescript": "^5.3.3"
   },
   "dependencies": {
+    "tsx": "^4.16.2",
     "winston": "^3.13.0",
     "yaml": "^2.4.2",
     "yargs": "^17.7.2"

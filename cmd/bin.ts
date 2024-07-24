@@ -57,7 +57,7 @@ yargs(hideBin(process.argv))
     (yargs) => {
       return yargs
         .option("log_level", { describe: "Set log level", default: "info" })
-        .option("discovery_ip", { describe: "Camera discovery IP address", default: "192.168.1.255" })
+        .option("discovery_ip", { describe: "Camera discovery IP address", default: "192.168.238.255" })
         .option("ssid", { describe: "Wifi network for the camera to connect to" })
         .option("password", { describe: "Wifi network password" })
         .demandOption(["ssid", "password"])
@@ -68,7 +68,7 @@ yargs(hideBin(process.argv))
       if (majorVersion < 16) {
         logger.error(`Node version ${majorVersion} is not supported, may malfunction`);
       }
-      pair({ ssid: argv.ssid, password: argv.password });
+      pair({ ssid: argv.ssid, password: argv.password, discovery_ip: argv.discovery_ip });
     },
   )
   .command(
@@ -87,7 +87,7 @@ yargs(hideBin(process.argv))
       if (majorVersion < 16) {
         logger.error(`Node version ${majorVersion} is not supported, may malfunction`);
       }
-      captureSingle({ discovery_ip: argv.discovery_ip, out_file: argv.out });
+      captureSingle({ discovery_ip: discovery_ip, out_file: argv.out });
     },
   )
   .demandCommand()

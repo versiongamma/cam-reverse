@@ -95,8 +95,8 @@ export const createResponseForControlCommand = (session: Session, dv: DataView):
 
   switch (cmd_id) {
     case ControlCommands.ConnectUserAck:
-      let c = new Uint8Array(dv.add(0x18).readByteArray(4).buffer);
-      session.ticket = [...c];
+      // let c = new Uint8Array(dv.add(0x18).readByteArray(4).buffer);
+      session.ticket = [];
       session.eventEmitter.emit("login");
       return [];
 
